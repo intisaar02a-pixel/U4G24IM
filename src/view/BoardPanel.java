@@ -3,7 +3,7 @@ package view;
 import  controller.GameController;
 import model.Board;
 import model.CellState;
-import javax.swing.Jbutton;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -60,7 +60,7 @@ public class BoardPanel extends JPanel{
      * @param board spelplanen att visa
      */
 
-    public void refresh (Board board)){
+    public void refresh (Board board){
     for (int r = 0; r < rows; r++){
         for (int c = 0; c < cols; c++){
             CellState state = board.getCellState(r, c);

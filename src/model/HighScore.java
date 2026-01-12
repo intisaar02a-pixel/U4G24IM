@@ -28,13 +28,14 @@ public class HighScore {
 
 
     /**
-     * Läger till en ny highscore-post och sparar till fil.
+     * Lägger till en ny highscore-post och sparar till fil.
      *
      * @param name spelarens namn
      * @param score poängen
      */
     public void addScore(String name, int score){
         entries.add(new ScoreEntry(name, score));
+        sortEntries();
         saveToFile();
     }
 
@@ -45,9 +46,11 @@ public class HighScore {
      * @param n antal poster att hämta
      * @return lista med de n högsta poängen
      */
-    public ArrayList<ScoreEntry> topScores = new ArrayList<>();
-    for(int i = 0; i < n && i < entries.size(); i++){
-        topScores.add(entries.get(i));
+    public ArrayList<ScoreEntry> getTopScores(int n){
+        ArrayList<ScoreEntry> topScores = new ArrayList<>();
+        for(int i = 0; i < n && i < entries.size(); i++){
+            topScores.add(entries.get(i));
+        }
         return topScores;
     }
 
@@ -71,7 +74,8 @@ public class HighScore {
             ScoreEntry e = topScores.get(i);
             result = result + (i + 1) + ". " + e.getName() +
                     " - " + e.getScore() + "\n";
-        } return result;
+        }
+        return result;
     }
 
 
@@ -99,6 +103,7 @@ public class HighScore {
                 }
             }
             scanner.close();
+            sortEntries();
         } catch (IOException e){
             System.out.println("Kunde inte läsa highscore-filen.");
         }
@@ -110,10 +115,10 @@ public class HighScore {
      */
     private void saveToFile(){
         try {
-            FileWriter writer = new FileWriter(filename);
+            FileWriter writer = new FileWriter(fileName);
             for(int i = 0; i < entries.size(); i++){
                 ScoreEntry e = entries.get(i);
-                writer.write(e.getName() + ", " + e.getScore() + "\n");
+                writer.write(e.getName() + "," + e.getScore() + "\n");
             }
             writer.close();
         } catch (IOException e){
@@ -123,16 +128,16 @@ public class HighScore {
 
 
     /**
-     * Sorterat entries i fallande ordning baserat på poäng.
+     * Sorterar entries i fallande ordning baserat på poäng.
      */
     private void sortEntries(){
         for(int i = 0; i < entries.size(); i++){
             for(int j = i + 1; j < entries.size(); j++){
-               if(entries.get(j).getScore() > entries.get(i).getScore()){
-                   ScoreEntry temp = entries.get(i);
-                   entries.set(i, entries.get(j));
-                   entries.set(j, temp);
-               }
+                if(entries.get(j).getScore() > entries.get(i).getScore()){
+                    ScoreEntry temp = entries.get(i);
+                    entries.set(i, entries.get(j));
+                    entries.set(j, temp);
+                }
             }
         }
     }
@@ -177,6 +182,4 @@ public class HighScore {
             return score;
         }
     }
-
-
 }

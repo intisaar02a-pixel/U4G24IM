@@ -3,7 +3,7 @@ package controller;
 import model.*;
 import view.MainFrame;
 import javax.swing.JOptionPane;
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Controller-klass som hanterar spellogik och kommunikation mellan Model och view
@@ -16,7 +16,7 @@ import java.util.List;
 public class GameController {
 
     private Board board;
-    private Mainframe frame;
+    private MainFrame frame;
     private PlayerType currentPlayer;
 
     private boolean p1FirstMove;
@@ -59,7 +59,7 @@ public class GameController {
 
         MoveResult result = board.placePiece(r, c, currentPlayer, isFirstMove);
 
-        if (result.isValid() == false) {
+        if (!result.isValid()) {
             updateView(result.getMessage());
             return;
         }
@@ -102,7 +102,7 @@ public class GameController {
 
         }
 
-        if (grantExtraTurn == false) {
+        if (!grantExtraTurn) {
             switchPlayer();
         }
 
@@ -115,7 +115,7 @@ public class GameController {
 
         private void switchPlayer(){
             if (currentPlayer == PlayerType.PLAYER_1) {
-                currentPlayer == PlayerType.PLAYER_2;
+                currentPlayer = PlayerType.PLAYER_2;
             } else {
                 currentPlayer = PlayerType.PLAYER_1;
             }

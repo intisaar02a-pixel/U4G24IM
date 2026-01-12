@@ -8,7 +8,7 @@ package model;
 public class MysteryEffect {
 
     private boolean extraTurn;
-    private boolean skripTurn;
+    private boolean skipTurn;
     private String message;
 
 
@@ -21,7 +21,7 @@ public class MysteryEffect {
      */
     public MysteryEffect(boolean extraTurn, boolean skipTurn, String message){
         this.extraTurn = extraTurn;
-        this.skripTurn = skipTurn;
+        this.skipTurn = skipTurn;
         this.message = message;
     }
 
@@ -41,7 +41,7 @@ public class MysteryEffect {
      *
      * @return true om spelaren ska skippa nästa tur
      */
-    public boolean isSkripTurn(){
+    public boolean isSkipTurn(){
         return skipTurn;
     }
 
