@@ -41,8 +41,8 @@ public class BoardPanel extends JPanel{
 
         for (int r = 0; r < rows; r++){
             for (int c = 0; c < cols; c++){
-                JButton b = new Jbutton();
-                b.setPreferredSize(new Dimen(60, 60));
+                JButton b = new JButton();
+                b.setPreferredSize(new Dimension(60, 60));
 
                 int finalR = r;
                 int finalC = c;
