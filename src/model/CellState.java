@@ -8,8 +8,8 @@ package model;
  */
 
 public enum CellState {
-    EMPTY, //Tom ruta
-    MYSTERY, //Oaktiverat mysterie
-    P1, //Spelare 1
-    P2 //Spelare 2
+    EMPTY,
+    MYSTERY,
+    P1,
+    P2
 }
