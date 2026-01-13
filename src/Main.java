@@ -12,7 +12,7 @@
      * @param args kommandoradsargument (används ej)
      */
     public static void main (String[] args) {
-        new controller.GameController();
+
 
     }
 }
